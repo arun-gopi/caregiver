@@ -1,0 +1,21 @@
+{
+    "nunito": {
+        "normal": "nunito_normal_586f3f8a461df5c8635a870033365d5e"
+    },
+    "material design icons": {
+        "normal": "material_design_icons_normal_ed92889d318d81b5a52fc2fdc1b74683"
+    },
+    "boxicons": {
+        "normal": "boxicons_normal_3e0e62256ad0c1345a2aa6653ce3c937"
+    },
+    "font awesome 5 brands": {
+        "normal": "font_awesome_5_brands_normal_78c5a2eeb4d4a67c73ec37e648082f40"
+    },
+    "font awesome 5 free": {
+        "normal": "C:\\laragon\\www\\caregiver\\storage\\fonts\/font_awesome_5_free_normal_8b58d390ea788ff22b516c3a7a7d3afd",
+        "900": "font_awesome_5_free_900_c3b2ea3a16dac3d086be10fa43e90ae1"
+    },
+    "dripicons-v2": {
+        "normal": "dripicons_v2_normal_42f4bd166bd7de43b6d054b508476b37"
+    }
+}
