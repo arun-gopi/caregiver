@@ -12,6 +12,7 @@ use Mpociot\Teamwork\Traits\UserHasTeams;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, HasPermissionsTrait,UserHasTeams;
+	
 
     /**
      * The attributes that are mass assignable.
@@ -40,26 +41,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Check if this user belongs to a role
-     *
-     * @return bool
-     */
-    public function hasRole($role_name)
-    {
-        foreach ($this->roles as $role) {
 
-            //I assumed the column which holds the role name is called role_name
-            if ($role->name == $role_name)
-                return true;
-        }
-        return false;
-    }
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class);
-    }
     // public function employees()
     // {
     //     return $this->belongsToMany(Employee::class);

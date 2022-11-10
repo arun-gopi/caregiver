@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/register', function () {
+    return view('auth.login');
+});
 
 //Auth::routes();
 Auth::routes(['verify' => true]);
@@ -31,9 +34,9 @@ Route::middleware(['auth', 'role:User'])->group(function () {
 
 });
 
-Route::group(['middleware' => ['auth', 'verified','teamowner']], function () {
+Route::group(['middleware' => ['auth','teamowner']], function () {
     Route::get('/', function () {return redirect('dashboard');});
-    // User is authentication and has User role
+    // User is authentication and has User role 
     //Route::get('/home', [App\Http\Controllers\backend\HomeController::class, 'index'])->name('admin');
     Route::get('/dashboard', [App\Http\Controllers\backend\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('patients', \App\Http\Controllers\backend\PatientController::class);

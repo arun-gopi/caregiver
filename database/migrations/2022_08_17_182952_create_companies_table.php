@@ -23,6 +23,13 @@ class CreateCompaniesTable extends Migration
             $table->string('state',100)->nullable();
             $table->string('email',150)->nullable();
             $table->string('phone',20)->nullable();
+            $table->string('NPI',20)->nullable();
+            $table->string('TIN',20)->nullable();
+            $table->string('MedicareID',20)->nullable();
+            $table->string('MedicaidID',20)->nullable();
+            $table->string('fax',20)->nullable();
+            $table->string('website',20)->nullable();
+            $table->text('timezone')->nullable();
             $table->text('logo')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();

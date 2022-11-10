@@ -23,6 +23,47 @@ class Company extends Model
         return 'uuid';
     }
 
+    public function users()
+    {
+  
+      return $this->belongsToMany(User::class, 'company_user');
+    }
+
+    public function attachUser($user)
+    {
+      if (is_object($user)) {
+        $user = $user->getKey();
+      }
+      if (is_array($user)) {
+        $user = $user['id'];
+      }
+      $this->users()->attach($user);
+    }
+  
+    public function detachUser($user)
+    {
+      if (is_object($user)) {
+        $user = $user->getKey();
+      }
+      if (is_array($user)) {
+        $user = $user['id'];
+      }
+      $this->users()->detach($user);
+    }
+  
+    public function attachRUsers($users)
+    {
+      foreach ($users as $user) {
+        $this->attachuser($user);
+      }
+    }
+  
+    public function detachRUsers($users)
+    {
+      foreach ($users as $user) {
+        $this->detachuser($user);
+      }
+    }
     
 
 }
