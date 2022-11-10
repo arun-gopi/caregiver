@@ -116,7 +116,6 @@
                 ?>
                 @forelse($employees as $emp)
                 <tr data-entry-id="{{ $emp->id }}" class="table-tr">
-                    <td>{{ $loop->iteration }}</td>
                     <td class="text-uppercase">
                         <h6>{{$emp->first_name}} {{$emp->last_name}}</h6>
                     </td>

@@ -36,9 +36,9 @@ Route::middleware(['auth', 'role:User'])->group(function () {
 
 Route::group(['middleware' => ['auth','teamowner']], function () {
     Route::get('/', function () {return redirect('dashboard');});
-    // User is authentication and has User role 
-    //Route::get('/home', [App\Http\Controllers\backend\HomeController::class, 'index'])->name('admin');
+
     Route::get('/dashboard', [App\Http\Controllers\backend\DashboardController::class, 'index'])->name('dashboard');
+    
     Route::resource('patients', \App\Http\Controllers\backend\PatientController::class);
     Route::post ('patients/addnote',[\App\Http\Controllers\backend\PatientController::class,'addnote']) -> name ('patients.addnote');
 

@@ -39,19 +39,18 @@
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button">
+                        <a href="{{ route('settings.company') }}" class="nav-link dropdown-toggle arrow-none" id="topnav-pages" role="button">
                             <i data-feather="settings"></i><span class="px-2">{{ __('Settings') }}</span>
-                            <div class="arrow-down"></div>
+                            <!-- <div class="arrow-down"></div> -->
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="topnav-pages">
+                        <!-- <div class="dropdown-menu" aria-labelledby="topnav-pages">
                             <a href="{{ route('settings.company') }}" class="dropdown-item">{{ __('Company') }}</a>
                             <a href="#" class="dropdown-item">{{ __('Department') }}</a>
                             <a href="#" class="dropdown-item">{{ __('Designation') }}</a>
                             <a href="#" class="dropdown-item">{{ __('Title') }}</a>
                             <a href="#" class="dropdown-item">{{ __('Level') }}</a>
                             <a href="#" class="dropdown-item">{{ __('Payer') }}</a>
-
-                        </div>
+                        </div> -->
                     </li>
                     @if(Auth::user()->hasRole('Admin'))
                     <li class="nav-item dropdown">

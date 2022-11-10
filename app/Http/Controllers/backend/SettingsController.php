@@ -8,6 +8,7 @@ use App\Http\Requests\backend\CompanyStoreRequest;
 use App\Models\Company;
 use App\Models\Employee;
 use App\Models\hha_forms;
+use App\Models\Patient;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,7 +22,7 @@ class SettingsController extends Controller
     
     public function showcompany()
     {
-        $patients = DB::table('patients')->get();
+        $patients = Patient::all();
         $companies= Auth::user()->companies;//Company::all();
         $gender = config('enumtypes.gender');
         return view('admin.company.company',compact('companies','patients','gender'));
@@ -50,7 +51,7 @@ class SettingsController extends Controller
 
     public function companypreview($uuid)
     {
-        $patients = DB::table('patients')->get();
+        $patients = Patient::all();
         $company = Company::where('uuid', '=', $uuid)->get()->first();
         return view('admin.company.view', compact('company','patients'));
     }

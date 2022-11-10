@@ -49,7 +49,7 @@ class VisitController extends Controller
     public function create()
     {
         $payers = DB::table('payers')->orderBy('name')->get();
-        $patients = DB::table('patients')->get();
+        $patients = Patient::all();
         $states = DB::table('states')->get();
         $employee = Employee::where('user_id', '=', Auth::user()->id)->get()->first();
         $clinicians = Employee::where('level', '=', 'Clinician')->get();
@@ -63,7 +63,7 @@ class VisitController extends Controller
     public function editcovid19($id)
     {
         $payers = DB::table('payers')->orderBy('name')->get();
-        $patients = DB::table('patients')->get();
+        $patients = Patient::all();
         $states = DB::table('states')->get();
         $employee = Employee::where('user_id', '=', Auth::user()->id)->get()->first();
         $clinicians = Employee::where('level', '=', 'Clinician')->get();
@@ -108,7 +108,7 @@ class VisitController extends Controller
     public function covidprint($id)
     {
         $covid19 = covidscreening::join('Employees', 'covidscreenings.employee_id', '=', 'employees.id')->join('patients', 'covidscreenings.Patient_id', '=', 'patients.id')->where('covidscreenings.id', '=', $id)->orderBy('created_at', 'desc')->get(['covidscreenings.*', 'employees.first_name as emp_fname', 'employees.last_name  as emp_lname', 'employees.Title  as emp_title', 'patients.physician_id'])->first();
-        $patient = DB::table('patients')->where('id', '=', $covid19->Patient_id)->get()->first();
+        $patient = Patient::where('id', '=', $covid19->Patient_id)->get()->first();
         $visitform = hha_forms::where('id', '=', $covid19->form_id)->get()->first();
         $company = DB::table('companies')->get()->first();
         $physicians =Employee::where('id', '=', $covid19->physician_id)->get()->first();
@@ -175,7 +175,7 @@ class VisitController extends Controller
     {
         $visitform = hha_forms::where('uuid', '=', $uuid)->get()->first();
         $payers = DB::table('payers')->orderBy('name')->get();
-        $patients = DB::table('patients')->get();
+        $patients = Patient::all();
         $pt = Patient::where('id', '=', $visitform->Patient_id)->get()->first();
         $pridiagnosis = pt_diagnosis::where('Patient_id', '=', $visitform->Patient_id)->where('primarydiag', '=', '1')->get();
         $othdiagnosis = pt_diagnosis::where('Patient_id', '=', $visitform->Patient_id)->whereNull('primarydiag')->get();

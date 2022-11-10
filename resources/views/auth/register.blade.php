@@ -27,68 +27,6 @@
 
                 <div class="card-body">
 
-                    <!-- <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form> -->
-
                     <div id="basic-pills-wizard" class="twitter-bs-wizard">
                         <ul class="twitter-bs-wizard-nav nav nav-pills nav-justified">
                             <li class="nav-item">
@@ -121,13 +59,13 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="basicpill-firstname-input" class="form-label">First name</label>
-                                                <input type="text" name="first_name" class="form-control" id="basicpill-firstname-input" placeholder="Enter Your First Name" value="{{ old('first_name') }}">
+                                                <input type="text" name="first_name" class="form-control @error('first_name') is-invalid @enderror" id="basicpill-firstname-input" placeholder="Enter Your First Name" value="{{ old('first_name') }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="basicpill-lastname-input" class="form-label">Last name</label>
-                                                <input type="text" name="last_name" class="form-control" id="basicpill-lastname-input" placeholder="Enter Your Last Name" value="{{ old('last_name') }}">
+                                                <input type="text" name="last_name" class="form-control  @error('last_name') is-invalid @enderror" id="basicpill-lastname-input" placeholder="Enter Your Last Name" value="{{ old('last_name') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -135,20 +73,13 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="emg_mobile" class="form-label">Phone</label>
-                                                <input class="form-control mobile-mask" type="text" id="emg_mobile" placeholder="Enter your Phone No." name="phone" value="{{ old('phone') }}">
+                                                <input class="form-control form-control @error('phone') is-invalid @enderror mobile-mask" type="text" id="emg_mobile" placeholder="Enter your Phone No." name="phone" value="{{ old('phone') }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="email-input" class="form-label">Email</label>
                                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
-
-                                                @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                                @enderror
-                                                <!-- <input type="email" name="email" class="form-control" id="email-input" placeholder="Enter your email" value="{{ old('email') }}"> -->
                                             </div>
                                         </div>
                                     </div>
@@ -156,7 +87,7 @@
                                         <div class="col-md-6">
                                             <div class="mb-3">
                                                 <label for="email-input" class="form-label">Password</label>
-                                                <input id="password" type="password" class="form-control" placeholder="Enter password" name="password" autocomplete="new-password">
+                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password" name="password" autocomplete="new-password">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -183,26 +114,26 @@
                                             <div class="row">
                                                 <div class="mb-3">
                                                     <label for="company-name" class="form-label">Company Name</label>
-                                                    <input type="text" name="company_name" class="form-control" id="company-name" placeholder="Enter Company Name" value="{{ old('company_name') }}">
+                                                    <input type="text" name="company_name" class="form-control  @error('company-name') is-invalid @enderror" id="company-name" placeholder="Enter Company Name" value="{{ old('company_name') }}">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="mb-3">
                                                     <label for="example-text-input" class="form-label">Address</label>
-                                                    <input class="form-control" type="text" id="address" placeholder="Address" name="address" value="{{ old('address') }}">
+                                                    <input class="form-control @error('address') is-invalid @enderror" type="text" id="address" placeholder="Address" name="address" value="{{ old('address') }}">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label for="example-tel-input" class="form-label">City</label>
-                                                        <input class="form-control" type="text" id="city" placeholder="City" name="city" value="{{ old('city') }}">
+                                                        <input class="form-control @error('city') is-invalid @enderror" type="text" id="city" placeholder="City" name="city" value="{{ old('city') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label for="pri_insurance" class="form-label">State</label>
-                                                        <select class="form-control" data-trigger id="choices-single-default" placeholder="Select State" name="state" value="{{ old('state') }}">
+                                                        <select class="form-control  @error('state') is-invalid @enderror" data-trigger id="choices-single-default" placeholder="Select State" name="state" value="{{ old('state') }}">
                                                             <option value="">Select State</option>
                                                             @forelse($states as $state)
                                                             <option value="{{ $state->state_code}}"> {{ $state->state_code}}-{{ $state->state}}</option>
@@ -215,7 +146,7 @@
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="formrow-password-input">Zip</label>
-                                                        <input class="form-control zip-mask" type="text" id="zip" placeholder="Zip" name="zip" value="{{ old('zip') }}">
+                                                        <input class="form-control error('zip') is-invalid @enderror zip-mask" type="text" id="zip" placeholder="Zip" name="zip" value="{{ old('zip') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -223,13 +154,13 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="comp_phone" class="form-label">Phone</label>
-                                                        <input class="form-control mobile-mask" type="text" id="comp_phone" placeholder="Phone" name="comp_phone" value="{{ old('comp_phone') }}">
+                                                        <input class="form-control error('comp_phone') is-invalid @enderror mobile-mask" type="text" id="comp_phone" placeholder="Phone" name="comp_phone" value="{{ old('comp_phone') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="comp_website" class="form-label">Website</label>
-                                                        <input class="form-control" type="text" id="comp_website" placeholder="Website" name="website" value="{{ old('comp_website') }}">
+                                                        <input class="form-control error('website') is-invalid @enderror" type="text" id="website" placeholder="Website" name="website" value="{{ old('website') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -237,7 +168,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="choices-single-default">Position</label>
-                                                        <select class="form-control" data-trigger id="choices-single-default" placeholder="Select Position" name="title" value="{{ old('title') }}">
+                                                        <select class="form-control   error('title') is-invalid @enderror " data-trigger id="choices-single-default" placeholder="Select Position" name="title" value="{{ old('title') }}">
                                                             <option value="">Select Position</option>
                                                             @forelse($titles as $title)
                                                             <option value="{{ $title->name}}"> {{ $title->name}}</option>
@@ -250,7 +181,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="choices-single-default">Timezone</label>
-                                                        <select class="form-control" data-trigger id="choices-single-default" placeholder="Select Timezone" name="timezone" value="{{ old('timezone') }}">
+                                                        <select class="form-control error('timezone') is-invalid @enderror " data-trigger id="choices-single-default" placeholder="Select Timezone" name="timezone" value="{{ old('timezone') }}">
                                                             <option value="">Select Timezone</option>
                                                             @forelse($timezones as $timezone)
                                                             <option value="{{ $timezone->Time_Zone}}"> {{ $timezone->Time_Zone}}</option>
