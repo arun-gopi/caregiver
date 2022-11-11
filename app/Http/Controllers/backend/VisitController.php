@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\backend\VisitStoreRequest;
 use App\Http\Requests\backend\VitalsStoreRequest;
+use App\Models\Company;
 use App\Models\covidscreening;
 use Illuminate\Support\Facades\DB;
 use App\Models\Patient;
 use App\Models\hha_forms;
 use App\Models\Employee;
 use App\Models\pt_diagnosis;
+use App\Models\visit_type;
 use App\Models\vitals;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -49,11 +51,12 @@ class VisitController extends Controller
     public function create()
     {
         $payers = DB::table('payers')->orderBy('name')->get();
+        $company = Company::all()->first();
         $patients = Patient::all();
         $states = DB::table('states')->get();
         $employee = Employee::where('user_id', '=', Auth::user()->id)->get()->first();
         $clinicians = Employee::where('level', '=', 'Clinician')->get();
-        $visittypes = DB::table('visit_types')->orderBy('revenuecode')->get();
+        $visittypes = visit_type::where('company_type',$company->company_type)->get();//DB::table('visit_types')->orderBy('revenuecode')->get();
         $servicetypes = DB::table('hcpcs')->orderBy('hcpcscode')->get();
         $gender = config('enumtypes.gender');
         $visitlocations = config('enumtypes.visitlocations');
@@ -67,7 +70,7 @@ class VisitController extends Controller
         $states = DB::table('states')->get();
         $employee = Employee::where('user_id', '=', Auth::user()->id)->get()->first();
         $clinicians = Employee::where('level', '=', 'Clinician')->get();
-        $visittypes = DB::table('visit_types')->orderBy('revenuecode')->get();
+        $visittypes = Company::get()->first()->visit_types(); //DB::table('visit_types')->orderBy('revenuecode')->get(); $company=
         $servicetypes = DB::table('hcpcs')->orderBy('hcpcscode')->get();
         $gender = config('enumtypes.gender');
         $visitlocations = config('enumtypes.visitlocations');
@@ -110,7 +113,7 @@ class VisitController extends Controller
         $covid19 = covidscreening::join('Employees', 'covidscreenings.employee_id', '=', 'employees.id')->join('patients', 'covidscreenings.Patient_id', '=', 'patients.id')->where('covidscreenings.id', '=', $id)->orderBy('created_at', 'desc')->get(['covidscreenings.*', 'employees.first_name as emp_fname', 'employees.last_name  as emp_lname', 'employees.Title  as emp_title', 'patients.physician_id'])->first();
         $patient = Patient::where('id', '=', $covid19->Patient_id)->get()->first();
         $visitform = hha_forms::where('id', '=', $covid19->form_id)->get()->first();
-        $company = DB::table('companies')->get()->first();
+        $company = Company::all()->first();
         $physicians =Employee::where('id', '=', $covid19->physician_id)->get()->first();
         //dd($covid19);
         return view('admin.visit.prints.C19printing', compact('covid19','visitform','company','physicians','patient'));

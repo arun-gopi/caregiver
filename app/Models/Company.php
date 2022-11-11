@@ -29,6 +29,12 @@ class Company extends Model
       return $this->belongsToMany(User::class, 'company_user');
     }
 
+    public function visit_types()
+    {
+  
+      return $this->hasMany(visit_type::class);
+    }
+
     public function attachUser($user)
     {
       if (is_object($user)) {

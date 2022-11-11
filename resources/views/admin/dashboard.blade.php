@@ -104,28 +104,6 @@
                     </div><!-- end card -->
                 </div><!-- end col -->
             </div><!-- end row-->
-
-            <div>
-                {{$company->company_name}}
-
-                <?php
-
-                use App\Models\Employee;
-
-                $employees = Employee::all()
-                ?>
-                @forelse($employees as $emp)
-                <tr data-entry-id="{{ $emp->id }}" class="table-tr">
-                    <td class="text-uppercase">
-                        <h6>{{$emp->first_name}} {{$emp->last_name}}</h6>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="8" class="text-center">{{ __('No Visits') }}</td>
-                </tr>
-                @endforelse
-            </div>
         </div>
     </div>
 </div>

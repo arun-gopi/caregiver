@@ -9,4 +9,10 @@ class message extends Model
 {
     protected $guarded = ['id', 'created_at', 'updated_at'];
     use HasFactory;
+
+    
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
 }

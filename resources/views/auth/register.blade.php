@@ -114,7 +114,7 @@
                                             <div class="row">
                                                 <div class="mb-3">
                                                     <label for="company-name" class="form-label">Company Name</label>
-                                                    <input type="text" name="company_name" class="form-control  @error('company-name') is-invalid @enderror" id="company-name" placeholder="Enter Company Name" value="{{ old('company_name') }}">
+                                                    <input type="text" name="company_name" class="form-control  @error('company_name') is-invalid @enderror" id="company-name" placeholder="Enter Company Name" value="{{ old('company_name') }}">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -146,7 +146,7 @@
                                                 <div class="col-lg-4">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="formrow-password-input">Zip</label>
-                                                        <input class="form-control error('zip') is-invalid @enderror zip-mask" type="text" id="zip" placeholder="Zip" name="zip" value="{{ old('zip') }}">
+                                                        <input class="form-control @error('zip') is-invalid @enderror zip-mask" type="text" id="zip" placeholder="Zip" name="zip" value="{{ old('zip') }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -154,13 +154,20 @@
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
                                                         <label for="comp_phone" class="form-label">Phone</label>
-                                                        <input class="form-control error('comp_phone') is-invalid @enderror mobile-mask" type="text" id="comp_phone" placeholder="Phone" name="comp_phone" value="{{ old('comp_phone') }}">
+                                                        <input class="form-control @error('comp_phone') is-invalid @enderror mobile-mask" type="text" id="comp_phone" placeholder="Phone" name="comp_phone" value="{{ old('comp_phone') }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="mb-3">
-                                                        <label for="comp_website" class="form-label">Website</label>
-                                                        <input class="form-control error('website') is-invalid @enderror" type="text" id="website" placeholder="Website" name="website" value="{{ old('website') }}">
+                                                        <label for="company_type" class="form-label">Select compnay type</label>
+                                                        <select class="form-control  @error('company_type') is-invalid @enderror" data-trigger id="company_type" placeholder="Select company type" name="company_type" value="{{ old('company_type') }}">
+                                                            <option value="">Select Company type</option>
+                                                            <option value="0">Home Health</option>
+                                                            <option value="1">Hospice</option>
+                                                        </select>
+                                                        @error('company_type')
+                                                        <p class="pristine-error text-help"> {{ $message }} </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -168,7 +175,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="choices-single-default">Position</label>
-                                                        <select class="form-control   error('title') is-invalid @enderror " data-trigger id="choices-single-default" placeholder="Select Position" name="title" value="{{ old('title') }}">
+                                                        <select class="form-control @error('title') is-invalid @enderror" data-trigger id="choices-single-default" placeholder="Select Position" name="title" value="{{ old('title') }}">
                                                             <option value="">Select Position</option>
                                                             @forelse($titles as $title)
                                                             <option value="{{ $title->name}}"> {{ $title->name}}</option>
@@ -181,7 +188,7 @@
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         <label class="form-label" for="choices-single-default">Timezone</label>
-                                                        <select class="form-control error('timezone') is-invalid @enderror " data-trigger id="choices-single-default" placeholder="Select Timezone" name="timezone" value="{{ old('timezone') }}">
+                                                        <select class="form-control  @error('timezone') is-invalid @enderror" data-trigger id="choices-single-default" placeholder="Select Timezone" name="timezone" value="{{ old('timezone') }}">
                                                             <option value="">Select Timezone</option>
                                                             @forelse($timezones as $timezone)
                                                             <option value="{{ $timezone->Time_Zone}}"> {{ $timezone->Time_Zone}}</option>
@@ -208,6 +215,9 @@
                     </div>
 
                 </div>
+            </div>
+            <div class="mt-5 text-center">
+                <p class="text-muted mb-0">Do have an account ? <a href="{{route('login')}}" class="text-primary fw-semibold"> Signin now </a> </p>
             </div>
         </div>
     </div>

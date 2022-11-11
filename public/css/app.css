@@ -76,6 +76,10 @@ body[data-layout-mode="dark"] {
     color: red;
 }
 
+.choices{
+  margin-bottom: 0px !important;
+}
+
 
 .btn-float{
 	position:fixed;
@@ -161,8 +165,7 @@ body[data-layout-mode="dark"] .layout-mode-light {
 .header-profile-user {
   height: 36px;
   width: 36px;
-  background-color: #74788d;
-  padding: 3px; }
+  background-color: #74788d;}
 
 .noti-icon i {
   font-size: 22px;

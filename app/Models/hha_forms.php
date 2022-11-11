@@ -22,4 +22,9 @@ class hha_forms extends Model
         return 'uuid';
     }
 
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
+
 }

@@ -12,4 +12,9 @@ class vitals extends Model
 
     use UsedByTeams;
     use HasFactory;
+
+    public function patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
 }

@@ -31,4 +31,20 @@ class Patient extends Model
     {
         return $this->hasMany(pt_diagnosis::class);
     }
+
+    public function messages()
+    {
+        return $this->hasMany(message::class);
+    }
+
+    public function visits()
+    {
+        return $this->hasMany(hha_forms::class);
+    }
+    
+    public function vitals()
+    {
+        return $this->hasMany(vitals::class);
+    }
 }
+

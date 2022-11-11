@@ -34,8 +34,7 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::get();
-        $employee = Employee::where('user_id', '=', Auth::user()->id)->get()->first();
-        return view('admin.patient.index', compact('patients', 'employee'));
+        return view('admin.patient.index', compact('patients'));
     }
 
     /**
@@ -48,7 +47,7 @@ class PatientController extends Controller
         $gender = config('enumtypes.gender');
         $payers = DB::table('payers')->orderBy('name')->get();
         $states = DB::table('states')->get();
-        $physicians = Employee::where('level', '=', 'physician')->get();
+        $physicians = Employee::where('level','physician')->get();
         return view('admin.patient.create', compact('payers', 'physicians', 'states',  'gender'));
     }
 
@@ -67,8 +66,8 @@ class PatientController extends Controller
         $MRN = $lname[0] . $fname[0] . random_int(10000, 99999);
         $request->merge(['MRN' => $MRN]);
         $Patient = Patient::create($request->all());
-        $request = $request->except(['first_name', '_token', '_method', 'last_name', 'birthday']);
-        //$Patient->createMeta($request);
+        // $request = $request->except(['_token', '_method','first_name',  'last_name', 'birthday']);
+        // $Patient->createMeta($request);
         return redirect()->route('patients.show', $Patient->uuid)->with([
             'message' => 'successfully created !',
             'alert-type' => 'success'
@@ -102,13 +101,13 @@ class PatientController extends Controller
         $patient = Patient::where('uuid', '=', $uuid)->get()->first();
         $payers = DB::table('payers')->orderBy('name')->get();
         $states = DB::table('states')->get();
-        $visits = hha_forms::join('Employees', 'hha_forms.Employee_id', '=', 'Employees.id')->where('Patient_id', '=', $patient->id)->get(['hha_forms.*', 'Employees.first_name', 'Employees.last_name', 'Employees.Title']);
-        $notes = message::join('Employees', 'messages.sender_id', '=', 'Employees.id')->orderBy('created_at', 'desc')->get(['messages.*', 'Employees.first_name', 'Employees.last_name', 'Employees.Title']);
+        $visits = $patient->visits()->join('Employees', 'hha_forms.Employee_id', '=', 'Employees.id')->get(['hha_forms.*', 'Employees.first_name', 'Employees.last_name', 'Employees.Title']);
+        $notes = $patient->messages()->join('Employees', 'messages.sender_id', '=', 'Employees.id')->orderBy('created_at', 'desc')->get(['messages.*', 'Employees.first_name', 'Employees.last_name', 'Employees.Title']);
         $company = Company::all()->first();
         $clinicians = Employee::where('level', '=', 'Clinician')->get();
         $physicians = Employee::where('level', '=', 'physician')->get();
         $diagnosis = pt_diagnosis::where('Patient_id', '=', $patient->id)->orderBy('primarydiag', 'desc')->get();
-        $vital = vitals::where('Patient_id', '=', $patient->id)->orderBy('created_at', 'desc')->get()->first();
+        $vital = $patient->vitals()->orderBy('created_at', 'desc')->get()->first();
         $visittypes = DB::table('visit_types')->orderBy('revenuecode')->get();
         $servicetypes = DB::table('hcpcs')->orderBy('hcpcscode')->get();
         $gender = config('enumtypes.gender');
