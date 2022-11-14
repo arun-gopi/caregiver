@@ -5,9 +5,11 @@ HHA Visit-{{ $patient->MRN }} | Care Giver
 @endsection
 
 @section('style')
-
+@include('partials.portrait')
 @endsection
+
 @section('content')
+<?php $folder = '/uploads/images/'; ?>
 <div class="container portrait">
     <table class="portrait last-chapter page-break-before@">
         <thead>
@@ -16,7 +18,9 @@ HHA Visit-{{ $patient->MRN }} | Care Giver
                     <table class="inner">
                         <tr>
                             <td class="h20 vamiddle">
-                                <img src="https://guidancehomehealth.com/wp-content/uploads/2022/06/logo-guidance-Latest-1-e1655324438733-1-1024x207.png" style="width:204px;height:40px;border:0;">
+                                @if (!empty($company->logo ))
+                                <img src={{$folder.$company->logo}} style="width:204px;height:50px;border:0;">
+                                @endif
                             </td>
                             <td class="c70 border-left">
                                 <table class="inner semipad divider">
@@ -1486,13 +1490,15 @@ HHA Visit-{{ $patient->MRN }} | Care Giver
                     <table class="inner">
                         <tr>
                             <td class="h20 vamiddle">
-                                <img src="https://guidancehomehealth.com/wp-content/uploads/2022/06/logo-guidance-Latest-1-e1655324438733-1-1024x207.png" style="width:204px;height:40px;border:0;">
+                                @if (!empty($company->logo ))
+                                <img src={{$folder.$company->logo}} style="width:204px;height:50px;border:0;">
+                                @endif
                             </td>
                             <td class="c70 border-left">
                                 <table class="inner semipad divider">
                                     <tr>
                                         <td colspan="2">
-                                            <h5><span class="blue">{{$company->name}}</span></h5>
+                                            <h5><span class="blue">{{$company->company_name}}</span></h5>
                                         </td>
                                     </tr>
                                     <tr>

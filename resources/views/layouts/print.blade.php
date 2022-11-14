@@ -33,40 +33,51 @@
         }
 
         .text-lowercase {
-            text-transform: lowercase !important; }
+            text-transform: lowercase !important;
+        }
 
         .text-uppercase {
-            text-transform: uppercase !important; }
+            text-transform: uppercase !important;
+        }
 
         .text-capitalize {
-            text-transform: capitalize !important; }
+            text-transform: capitalize !important;
+        }
 
         .imgaligncenter {
             display: flex;
             align-items: center;
         }
+
         .itemaligncenter {
             display: flex;
             align-items: center;
 
         }
+
         .gap-0 {
-            gap: 0 !important; }
+            gap: 0 !important;
+        }
 
         .gap-1 {
-            gap: 0.25rem !important; }
+            gap: 0.25rem !important;
+        }
 
         .gap-2 {
-            gap: 0.5rem !important; }
+            gap: 0.5rem !important;
+        }
 
         .gap-3 {
-            gap: 1rem !important; }
+            gap: 1rem !important;
+        }
 
         .gap-4 {
-            gap: 1.5rem !important; }
+            gap: 1.5rem !important;
+        }
 
         .gap-5 {
-            gap: 3rem !important; }
+            gap: 3rem !important;
+        }
 
         .landscape {
             height: 600pt;
@@ -1011,148 +1022,8 @@
         }
     </style>
 
-    <style type="text/css" media="print">
-        /*@media print {
-	        * {-webkit-print-color-adjust: exact}
-        }*/
+    @yield('style')
 
-        * {
-            background-image: none !important;
-        }
-
-        .page {
-            width: 210mm;
-            min-height: 297mm;
-            padding: 20mm;
-            margin: 10mm auto;
-            background: white;
-        }
-
-        @page {
-            font-family: Open Sans, Source Sans Pro, Helvetica, Arial, sans-serif;
-            font-weight: 400;
-            font-stretch: normal;
-            size: letter;
-            margin: 0;
-
-            margin: 15pt 25pt;
-        }
-
-        @media print {
-
-            html,
-            body {
-                width: 210mm;
-                height: 95%;
-                /*set to 0 to avoid extra blank page*/
-            }
-
-            .page {
-                margin: 0;
-                border: initial;
-                border-radius: initial;
-                width: initial;
-                min-height: initial;
-                box-shadow: initial;
-                background: initial;
-                page-break-after: always;
-            }
-        }
-
-        /*@page :first{
-	        margin: 10.8pt 15.8pt 20.8pt 10.8pt;
-        }*/
-
-        body {
-            font-family: Calibri, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-            font-weight: 300;
-            color: #000;
-            font-size: 8pt;
-        }
-
-        thead {
-            display: table-header-group;
-        }
-
-        tbody {
-            display: table-row-group;
-        }
-
-        tfoot {
-            display: table-footer-group;
-        }
-
-        .container {
-            overflow: visible;
-            padding: 0;
-        }
-
-        table.chapter {
-            page-break-after: always;
-        }
-
-        table.last-chapter {
-            page-break-after: auto;
-        }
-
-        table.page-break-after {
-            page-break-after: always;
-        }
-
-        table.no-page-break {
-            page-break-after: auto;
-        }
-
-        table.page-break-before {
-            page-break-before: always;
-        }
-
-        p {
-            font-size: 8pt;
-        }
-
-        .lightgrey-bg {
-            background-color: #f6f6f6;
-            -webkit-print-color-adjust: exact;
-        }
-
-
-        .grey-bg {
-            background-color: #dddddd;
-            -webkit-print-color-adjust: exact;
-        }
-
-        .no-print {
-            display: none;
-        }
-
-        .noPrintBorder {
-            border: none;
-        }
-
-        .noPrintPadding {
-            padding: 0;
-        }
-
-        .doc-btn-wrap {
-            display: none;
-        }
-
-        ul {
-            margin: 0 auto 10px;
-            padding-left: 25px;
-        }
-
-        ul li {
-            margin-bottom: 8px;
-            font-size: 9pt;
-        }
-
-        ul li>ul {
-            margin-top: 8px;
-        }
-    </style>
 
     <script type="text/javascript">
         window.onload = function() {

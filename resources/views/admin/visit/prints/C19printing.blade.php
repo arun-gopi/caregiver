@@ -4,10 +4,13 @@
 Covid Screening-{{ $patient->MRN }} | Care Giver
 @endsection
 
-@section('style')
 
+@section('style')
+@include('partials.portrait')
 @endsection
+
 @section('content')
+<?php $folder = '/uploads/images/'; ?>
 <div class="container portrait">
     <table class="portrait last-chapter page-break-before@">
         <thead>
@@ -16,7 +19,9 @@ Covid Screening-{{ $patient->MRN }} | Care Giver
                     <table class="inner">
                         <tr>
                             <td class="h20 vamiddle">
-                                <img src="https://guidancehomehealth.com/wp-content/uploads/2022/06/logo-guidance-Latest-1-e1655324438733-1-1024x207.png" style="width:204px;height:40px;border:0;">
+                                @if (!empty($company->logo ))
+                                <img src={{$folder.$company->logo}} style="width:204px;height:50px;border:0;">
+                                @endif
                             </td>
                             <td class="c70 border-left">
                                 <table class="inner semipad divider">
@@ -48,7 +53,7 @@ Covid Screening-{{ $patient->MRN }} | Care Giver
             </tr>
             <tr>
                 <td class="border-bottom"><b>
-                <p>Date: <span class="blue">@if(isset($covid19->evaldate)) {{ \Carbon\Carbon::parse($covid19->evaldate)->isoFormat('MM/DD/YYYY') }} @endif&nbsp;</span></p>
+                        <p>Date: <span class="blue">@if(isset($covid19->evaldate)) {{ \Carbon\Carbon::parse($covid19->evaldate)->isoFormat('MM/DD/YYYY') }} @endif&nbsp;</span></p>
                     </b>
                 </td>
             </tr>

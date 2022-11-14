@@ -15,7 +15,7 @@ Companies | Care Giver
             <div class="card">
                 <x-flash-message />
                 <div class="card-header d-flex justify-content-between">
-                    <h4>Companies</h4>
+                    <h4>{{$company->company_name}}</h4>
                     <!-- <a href="#">
                         <button type="button" class="btn btn-light waves-effect waves-light">
                             <i class="bx bx-plus font-size-16 align-middle mr-2"></i> New Company

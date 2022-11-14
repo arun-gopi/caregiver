@@ -183,6 +183,9 @@
                                                             <option value="">No Position found</option>
                                                             @endforelse
                                                         </select>
+                                                        @error('title')
+                                                        <p class="pristine-error text-help"> {{ $message }} </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6">
@@ -196,6 +199,9 @@
                                                             <option value="">No Timezone found</option>
                                                             @endforelse
                                                         </select>
+                                                        @error('timezone')
+                                                        <p class="pristine-error text-help"> {{ $message }} </p>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
